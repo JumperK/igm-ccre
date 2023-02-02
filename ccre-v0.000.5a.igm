@@ -391,9 +391,18 @@ Buildings
 		on tick:
 			yield 1 second
 			if (coin:earned>49.5) hide cloneVis
-			if (coin:earned>3749.5) hide machineVis
-			if (coin:earned>99999.5) hide hackedBlockVis
-			if (coin:earned>2999999.5) hide goldFlowerVis
+			if (coin:earned>3749.5)
+				hide machineVis
+				toast New Building Unlock!
+			end
+			if (coin:earned>99999.5)
+				hide hackedBlockVis
+				toast New Building Unlock!
+			end
+			if (coin:earned>2999999.5)
+				hide goldFlowerVis
+				toast New Building Unlock!
+			end
 		end
 		always hidden
 	
@@ -496,19 +505,16 @@ Buildings
 	*machineVis
 		cost:7500 coins
 		req:1875 coins:earned
-		toast New Building Unlock!
 		icon:icons[3,1] back[1,0]
 	
 	*hackedBlockVis
 		cost:200000 coins
 		req:50000 coins:earned
-		toast New Building Unlock!
 		icon:icons[4,1] back[1,0]
 	
 	*goldFlowerVis
 		cost:6000000 coins
 		req:1500000 coins:earned
-		toast New Building Unlock!
 		icon:icons[5,1] back[1,0]
 	
 	
