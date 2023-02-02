@@ -1,0 +1,1450 @@
+// Coin Collector
+// Original Version: 2.0b
+// Originally Published / Updated On: July 26, 2014 / September 10, 2014
+// Made by lennonluiz0907
+
+// Coin Collector: Recollection Edition
+// VERSION 0.000α
+// CREATED ON JULY 11th, 2022
+// LAST UPDATED ON JULY 11th, 2022
+
+// DEVELOPER COPY -- FOR TESTING ONLY
+// PLEASE USE THE FOLLOWING LINK TO PLAY THE REGULAR VERSION
+
+// CODE TO TEST: https://orteil.dashnet.org/igm/?g=f8H18qGi
+// CODE TO PLAY: http://orteil.dashnet.org/igm/?g=
+
+// WANT TO SEE HOW FAR THE PROJECT IS GOING?
+// GO HERE TO SEE THE TRELLO BOARD: https://trello.com/b/BQliu1SF/coin-collector-recollection-edition
+
+// CRITIQUE IS APPRECIATED
+
+/* DEV NOTES:
+	
+	-----
+	[WHAT IS THIS?]
+	
+	It is a recreation of the Classic IGM Game "Coin Collector", which is a Mario-Based Idle Incremental Game that gets crazy *very, very fast*; so much so, that you realize that the game has little to do with the Mario Series (save for the Mario-Related Stuff within).	
+	The game isn't that great (especially when you compare it to other great IGM Games, like "Wall Destroyer"), but it is very memorable for how crazy it gets.
+	
+	Since the game is made using Orteil's Old Idle Game Maker Framework, I figured it would be best to port this over to the New Framework (also using this as practice on making IGM Games, so win/win).
+	
+	I have yet to get permission from lennonluiz0907, but regardless I will still give credit for the Original Project.
+	
+	[WAIT, HOW COME THERE ARE THINGS MISSING IN THIS VERSION?]
+	
+	They aren't missing per se, but rather renamed to make more sense (example: "Yoshi Coins" are now called "Dragon Coins", because that is what they're called in the original game lennonluiz based it off of).
+	
+	Keep in mind that although it doesn't look like everything is ported to here 1:1, everything should function the same as the old version.
+	
+	[IS THERE ANYTHING ELSE IN TERMS OF CHANGE?]
+	
+	Yes, as the graphics for the Buttons, Upgrades, Achievements, & Buildings aren't that great (most of them look like they were made in MSPaint; others looks like they were taken from Google Images); I figure I could overhaul the graphics so that they're at least decent.
+	
+	In terms of Graphics, at the moment I have done most of the Buildings (1-Up Mushrooms all the way to Warps, + Darkness Converters), with 1 Background (might be expanded upon, idk), 1 Unique Upgrade/Achievement Icon(s) (Analog Clock); Reality Converters, Wizards, & Gold Rings are planned to be made very soon (I've already got ideas for the aforementioned Reality Converters).
+	
+	Besides this, I also plan on having a "Layering" Set-Up for Achievements & Buildings (which is based on "Peanut Butter Cupper"), where the Tiers, Backgrounds, & Icons are in separate sheets overlayed on top of one another.
+	
+	I also plan on implementing Shinies that *could* fit into Coin Collector (haven't ultimately decided on it YET, but I don't mind the idea of "Star Bits" being involved), and new content beyond that (Wizards never got Achievements in the Original; plan on changing that, at least).
+	
+	[IS THAT ALL? WHAT ELSE DO YOU PLAN ON DOING?]
+	
+	I plan to have a list that contains the following changes from the Old IGM Game to the New IGM Game, like the aforementioned "Yoshi Coins".
+	
+	As it stands right now, this is more of a proof-of-concept that I hope expands out into something great (or at least, decent).
+	-----
+	
+	-----
+	TO DO:
+	 - Add in the first four buildings, with all their upgrades & achievements [ ]
+	   - 1-Up Mushrooms    [ ]
+	     - Achievements [5/13]
+		 - Upgrades     [5/24]
+       - Coin Machines     [ ]
+	     - Achievements [0/13]
+		 - Upgrades     [5/24]
+       - Hacked ?-Blocks   [ ]
+	     - Achievements [0/13]
+		 - Upgrades     [5/24]
+		 - Synergy       [5/8]
+       - Gold Flowers      [ ]
+	     - Achievements [0/13]
+		 - Upgrades     [5/24]
+		 - Synergy       [5/8]
+	 - Finish creating the graphics for the following buildings/resources [2/10]
+	   - Reality Converter      [ ]
+	   - Wizard                 [ ]
+	   - Gold Ring              [ ]
+	   - Yellow Coin            [X]
+	   - Dragon Coin            [X] -- NEED SECOND OPINION ON GRAPHIC BEFORE ADDING TO SHEET
+	   - Fortune (Coins)        [ ]
+	   - Fortune (Dragon Coins) [ ]
+	   - Wall Token             [ ]
+	   - Fortune Token          [ ]
+	   - Win Coin               [ ]
+	   - Frog Coin              [ ]
+	 - Resize Brick-Block to be 1/4 its size (currently, it takes up 4 Brick-Blocks, instead of 1) [X] -- Scaled Brick-Block Graphic up, instead
+	 - (Eventually) Create a List of Changes between Old IGM Version and New IGM Version [ ]
+	 - Finish Porting enough things to this Project [24/750] -- Jeez lennonluiz, why didn't you add 250 more to get an even 1k? (jk don't take it seriously m8)
+	   - Buildings                                  [5/43]
+	     - Normal Buildings                         [4/10]
+	     - Special Buildings                        [0/3]
+	     - Objectives                               [0/13]
+	     - Bonus Objectives                         [0/16]
+	     - Misc. Buildings                          [1/1] -- Time-Related
+	   - Resources                                  [9/46] -- Technically there are more, but I'm only counting Resources shared from the Old IGM game & this game
+	     - Main Resources                           [4/11]
+		 - Building Stats                           [4/22]
+		 - Other Stats                              [1/11]
+		 - Labels                                   [0/2]
+	   - Buttons                                    [2/6] -- There is an "Ascension" Button (Labelled "Reset") in here, but it's best to move it to an Upgrade...
+	     - Normal Buttons                           [2/2] -- Despite the 2nd Button already existing, the Unlock has yet to be made
+		 - Ascension                                [0/1]
+		 - Secret                                   [0/1]
+		 - Reset                                    [0/1] -- Going to be obsolete
+		 - Misc.                                    [0/1]
+	   - Upgrades                                   [?/464] -- Jesus, that is A LOT of Upgrades; Most of which *are* Synergy, but still...
+	     - Time Upgrades                            [5/18]
+		 - Techs & Unlocks                          [0/12]
+		 - Darkness Synergy                         [0/15]
+		 - Win Synergy                              [0/10]
+		 - IRL Money Synergy                        [0/5]
+		 - Misc. Upgrades                           [0/3]
+		 - Click Upgrades                           [5/24]
+		 - Click Synergy (Buildings]                [8/20]
+		 - Click Synergy (Building Count)           [0/7]
+		 - Yoshi Coin Upgrades                      [0/5]
+		 - Yoshi Coin Synergy                       [0/5]
+		 - 1-Up Mushroom Upgrades                   [5/24]
+		 - Coin Machine Upgrades                    [5/24]
+		 - Hacked ?-Block Upgrades                  [5/24]
+		 - Coin Machine / Hacked ?-Block Synergy    [5/8] -- In case this is not obvious, all Synergy Upgrades will require both buildings, which means they won't be inserted *until* I create the required building (to prevent errors, mostly)
+		 - Gold Flower Upgrades                     [5/24]
+		 - 1-Up Mushroom / Gold Flower Synergy      [5/8]
+		 - Evil Koopa Bank Upgrades                 [0/25]
+		 - Yoshi Upgrades                           [0/24]
+		 - Evil Koopa Bank / Yoshi Synergy          [0/8]
+		 - Warp Upgrades                            [0/24]
+		 - Reality Converter Upgrades               [0/24]
+		 - Warp / Reality Converter Synergy         [0/8]
+		 - Darkness Converter Upgrades              [0/24]
+		 - Wizard Upgrades                          [0/24]
+		 - Darkness Converter / Wizard Synergy      [0/8]
+		 - Ring Synergy                             [0/7]
+		 - Egg Synergy                              [0/6]
+		 - Star Coins                               [0/45] -- The code has Star Coin #1->#46 written, but there is no #37
+		 - Trophy                                   [0/1]
+	   - Achievements                               [6/191] -- Compared to the Amount of Upgrades, this is a little over x2 (~2.44) times less
+	     - Time Achievements                        [5/12]
+		 - Coins (Total Coins)                      [1/7]
+		 - Coins (Surpassing Fortune)               [0/8]
+		 - Coins (Win Locks)                        [0/4]
+		 - 1-Up Mushroom Achievements               [5/13]
+		 - Coin Machine Achievements                [0/13]
+		 - Hacked ?-Block Achievements              [0/13]
+		 - Gold Flower Achievements                 [0/13]
+		 - Evil Koopa Bank Achievements             [0/13]
+		 - Yoshi Achievements                       [0/13]
+		 - Warp Achievements                        [0/13]
+		 - Reality Converter Achievements           [0/13]
+		 - Darkness Converter Achievements          [0/13]
+		 - Buy X of Each Building Achievements      [0/14]
+		 - Unstable Koopa Bank Upgrade Achievements [0/5]
+		 - Darkness Upgrade Achievements            [0/4]
+		 - Win Upgrade Achievements                 [0/3]
+		 - Misc. Achievements                       [0/2]
+		 - Star Coin Achievements                   [0/10]
+		 - Secret Achievements                      [0/5]
+	-----
+	
+	
+*/
+
+Let's make a game!
+	name:Coin Collector: Recollection Ed. V0.000α
+	by:lennonluiz0907 (Recreated by JumperTD)
+	desc:The Classic IGM Game remade for Modern IGM!<//><q><i>You appeared in a strange, new land. There are Mushrooms that make you Larger, and Flowers that give you Pyrokinesis.</>Looking around, you notice an abundance of large blocks of bricks and blocks with ?-marks on them.</>You quickly see an Italian Man in Red running through and punching these blocks, with Coins popping out of them.</>You then have only one goal in mind: Get Rich Quick!</>With your goal set in mind, you hop right into the action, hoping to be the richest person in the world.</i></q></></>UPDATE LOG:<//></><.>ADDED 4 NEW BUILDINGS - EACH OF THEM WITH 5 UPGRADES, 4 SYNERGY UPGRADES, 2 CLICK SYNERGY UPGRADES; 1-UP MUSHROOMS ARE THE ONLY ONES TO HAVE ACHIEVEMENTS</></><.>TUTORIAL IN THE FORM OF A BOOK</></><.>5 TIME UPGRADES & ACHIEVEMENTS</></><.>1 COIN ACHIEVEMENT (MORE SOON!)
+
+Settings
+	//background:url.png
+	
+	building cost increase:108%
+	building cost refund:80%
+	
+	spritesheet:icons, 64 by 64, https://file.garden/YslsmLutTE5LCbQi/Coin%20Collector%3A%20Recollection%20Edition/Images/ccr-icons.png
+	spritesheet:num, 64 by 64, https://file.garden/YslsmLutTE5LCbQi/Coin%20Collector%3A%20Recollection%20Edition/Images/ccr-numbers.png
+	spritesheet:back, 64 by 64, https://file.garden/YslsmLutTE5LCbQi/Coin%20Collector%3A%20Recollection%20Edition/Images/ccr-backdrops.png
+	
+	no particles
+	no bulk particles
+
+Includes
+
+
+Layout
+
+
+Buttons
+	*blockBrick
+		name:Brick Block
+		desc:A block made out of ceramic bricks.</>This somehow has <b>Coins</b> inside of it.
+		icon:https://file.garden/YslsmLutTE5LCbQi/Coin%20Collector%3A%20Recollection%20Edition/Images/brick-block.png
+		on click:
+			yield 1 coin
+			yield 1 coinClickOA
+			yield 1 coinClickAT
+			yield 1 coinTotalOA
+			yield 1 coinTotalAT
+		end
+		class:bigButton hasFlares
+	
+	// PLANS TO MAKE IT REQUIRE RESEARCH TO UNLOCK BUTTON
+	*blockDrgnCoin
+		name:Golden Turn Block
+		desc:A rare block imported from Dinosaur Island itself.</>This can produce <b>Dragon Coins</b>.
+		//icon:
+		on click:
+			yield 0.00000001 dragonCoin
+			yield 0.00000001 drgnCoinClickOA
+			yield 0.00000001 drgnCoinClickAT
+			yield 0.00000001 drgnCoinTotalOA
+			yield 0.00000001 drgnCoinTotalAT
+		end
+		hidden
+		class:bigButton hasFlares
+
+Resources
+	// ACHIEVEMENT & UPGRADE AMOUNT
+	// CHANGE WHEN ADDING NEW CHEEVOS & UPPERS
+	
+	*upgrTotal
+		start with:48
+		always hidden
+	
+	*achTotal
+		start with:12
+		always hidden
+	
+	// MAIN RESOURCES (ALWAYS VISIBLE)
+
+	*coin|coins
+		name:Coin|Coins
+		desc:maybe one day, this will be used to describe what this is</></></>today, however is not that day :P</><i>"sorry to dissapoint" - JumperTD</>¯\_(ツ)_/¯</i>
+		text:Coin[s?this]: [this]
+		icon:icons[2,2]
+		tag:mainRes
+	
+	*dragonCoin|dragonCoins
+		name:Dragon Coin|Dragon Coins
+		desc:maybe one day, this will be used to describe what this is</></></>today, however is not that day :P</><i>"sorry to dissapoint" - JumperTD</>¯\_(ツ)_/¯</i>
+		text:Dragon Coin[s?this]: [this]
+		icon:icons[3,2]
+		//req:
+		tag:mainRes
+	
+	// STATISTICS (ONLY SHOWS IN SPECIFIC SCREEN)
+	
+	*TEMPLATE
+		no tooltip
+		hidden
+	
+	// BUILDINGS OWNED / PEOPLE HIRED
+	
+	*personHire
+		text:<i>You have hired <b>[?(this=0)|no one|][?(this=1)|[this] Person|[this] People]</b></i>
+		tag:statMain
+	
+	*buildAmt
+		text:<i>You have built <b>[?(this=0)|nothing|[this] Building[s?this]]</b></i>
+		tag:statMain
+	
+	// ALL PRODUCTION
+	
+	*coinTotalAT
+		text:<i>You have made <b>[this] Coins[s?this]</b> in Total</i>
+		tags:statProd allTime
+	
+	*coinTotalOA
+		text:<i>You have made <b>[this] Coins[s?this]</b> this Ascension</i>
+		tags:statProd oneAscend
+	
+	*drgnCoinTotalAT
+		text:<i>You have made <b>[this] Dragon Coins[s?this]</b> in Total</i>
+		tags:statProd allTime
+	
+	*drgnCoinTotalOA
+		text:<i>You have made <b>[this] Dragon Coins[s?this]</b> this Ascension</i>
+		tags:statProd oneAscend
+	
+	// CLICKING PRODUCTION
+	
+	*coinClickOA
+		text:<i>You have earned <b>[this] Coin[s?this]</b> for Clicking this Ascension</i>
+		tags:statProd oneAscend clickProd
+	
+	*coinClickAT
+		text:<i>You have earned <b>[this] Coin[s?this]</b> for Clicking in Total</i>
+		tags:statProd allTime clickProd
+		//shown when have ascendAch
+	
+	*drgnCoinClickOA
+		text:<i>You have earned <b>[this] Dragon Coin[s?this]</b> for Clicking this Ascension</i>
+		tags:statProd oneAscend clickDrgnProd
+	
+	*drgnCoinClickAT
+		text:<i>You have earned <b>[this] Dragon Coin[s?this]</b> for Clicking in Total</i>
+		tags:statProd allTime clickDrgnProd
+		//shown when have ascendAch
+	
+	// BUILDING PRODUCTION
+	
+	*cloneCoin|cloneCoins
+		text:<i>You have earned <b>[?(this=0)|no Coin|[this] Coin[s?this]]</b> from <b>[(clone)] Clone[s?(clone)]</b></i>
+		tags:statBuild cloneProd
+
+	*cloneDrgnCoin|cloneDrgnCoins
+		text:<i>You have earned <b>[?(this=0)|no Dragon Coin|[this] Dragon Coin[s?this]]</b> from <b>[(clone)] Clone[s?(clone)]</b></i>
+		tags:statBuild cloneDrgnProd
+	
+	*machineCoin|machineCoins
+		text:<i>You have earned <b>[?(this=0)|no Coin|[this] Coin[s?this]]</b> from <b>[(machine)] Coin Machine[s?(machine)]</b></i>
+		tags:statBuild machineProd
+	
+	*machineDrgnCoin|machineDrgnCoins
+		text:<i>You have earned <b>[?(this=0)|no Dragon Coin|[this] Dragon Coin[s?this]]</b> from <b>[(machine)] Coin Machine[s?(machine)]</b></i>
+		tags:statBuild machineDrgnProd
+	
+	*hackedBlockCoin|hackedBlockCoins
+		text:<i>You have earned <b>[?(this=0)|no Coin|[this] Coin[s?this]]</b> from <b>[(hackedBlock)] Hacked ?-Block[s?(hackedBlock)]</b></i>
+		tags:statBuild hackedProd
+	
+	*hackedBlockDrgnCoin|hackedBlockDrgnCoins
+		text:<i>You have earned <b>[?(this=0)|no Dragon Coin|[this] Dragon Coin[s?this]]</b> from <b>[(hackedBlock)] Hacked ?-Block[s?(hackedBlock)]</b></i>
+		tags:statBuild hackedDrgnProd
+	
+	*goldFlowerCoin|goldFlowerCoins
+		text:<i>You have earned <b>[?(this=0)|no Coin|[this] Coin[s?this]]</b> from <b>[(goldFlower)] Golden Clone[s?(goldFlower)]</b></i>
+		tags:statBuild flowerProd
+	
+	*goldFlowerDrgnCoin|goldFlowerDrgnCoins
+		text:<i>You have earned <b>[?(this=0)|no Dragon Coin|[this] Dragon Coin[s?this]]</b> from <b>[(goldFlower)] Golden Clone[s?(goldFlower)]</b></i>
+		tags:statBuild flowerDrgnProd
+
+	// ACHIEVEMENTS & UPGRADES PERCENTAGE
+	
+	*upgrAmt
+		text:<i>You have purchased <b>[this]/[upgrTotal] (~[((upgrAmt/upgrTotal)*100)]%) Upgrade[s?this]</b> in Total</i>
+		tag:statPerc
+		shown
+	
+	*achAmt
+		text:<i>You have earned <b>[this]/[achTotal] (~[((achAmt/achTotal)*100)]%) Achievement[s?this]</b> in Total</i>
+		tag:statPerc
+		shown
+	
+	// TIME
+	
+	*second|seconds
+
+Buildings
+	/* HOW THIS WORKS:
+		There are two versions of the Buildings declared here.
+		
+		"LOCKED BUILDINGS" is purely cosmetic, being there only for hinting of a new building.
+		"UNLOCKED BUILDINGS" is where the actual buildings are located.
+		
+		THE REQUIREMENTS FOR SHOWING (BUT NOT REVEALING) THE BUILDING IS: (ACTUAL PRICE / 4)
+		THE REQUIREMENTS FOR REVEALING THE BUILDING IS: ((ACTUAL PRICE / 2) - 0.1)
+		THE REASON IS BECAUSE IT IS ENTIRELY POSSIBLE TO HAVE 1.1 COINS, OR 0.74999.. COINS
+	*/
+	
+	*gameSys
+		start with:1
+		on tick:
+			yield 1 second
+			if (coin:earned>49.5) hide cloneVis
+			if (coin:earned>3749.5) hide machineVis
+			if (coin:earned>99999.5) hide hackedBlockVis
+			if (coin:earned>2999999.5) hide goldFlowerVis
+		end
+		always hidden
+	
+	// UNLOCKED BUILDINGS
+	
+	*TEMPLATE
+		on earn:buildAmt is buildAmt+1
+		on lose:buildAmt is buildAmt-1
+	
+	*clone|clones
+		name:1-Up Mushroom|1-Up Mushrooms
+		desc:Creates a clone of yourself, and hunts down coins for you.<//><.>Produces <b>15 Coins</b> per Second.<//></><i>"I'm using those extra lives to clone me and get more coins!</>But they don't know if they're getting the right ones, so they aren't that good."</i>
+		cost:100 coins
+		req:50 coins:earned
+		on tick:
+			yield 15 coins
+			yield 15 cloneCoins
+			yield 0.000000015 dragonCoins
+			yield 0.000000015 cloneDrgnCoins
+		end
+		on earn:personHire is personHire+1
+		on lose:personHire is personHire-1
+		icon:icons[2,0] back[1,0]
+		tags:melee powerUp
+	
+	*machine|machines
+		name:Coin Machine|Coin Machines
+		desc:A robust machine that produces coins for you.<//><.>Produces <b>1 Thousand Coins</b> per Second.<//></><i>"A machine that makes coins.</>It seems like they make them out of thin air...</>Ugh, let's stop thinking about that, before my head starts to hurt.."</i>
+		cost:7500 coins
+		req:3750 coins:earned
+		on tick:
+			yield 750 coins
+			yield 750 machineCoins
+			yield 0.00000075 dragonCoins
+			yield 0.00000075 machineDrgnCoins
+		end
+		icon:icons[3,0] back[1,0]
+		tags:industrial neutral
+	
+	*hackedBlock|hackedBlocks
+		name:Hacked ?-Block|Hacked ?-Blocks
+		desc:An untouched ?-Block, crudely hacked to produce coins for you.<//><.>Produces <b>20000 Coins</b> per Second. <i>"We hacked into the internal system of a ?-Block, an-</>HOLY S<b></b>H<b></b>I<b></b>T, WHAT'S HAPPENING?!"</i>
+		cost:200000 coins
+		req:100000 coins:earned
+		on tick:
+			yield 20000 coins
+			yield 20000 hackedBlockCoins
+			yield 0.00002 dragonCoins
+			yield 0.00002 hackedBlockDrgnCoins
+		end
+		icon:icons[4,0] back[1,0]
+		tags:industrial neutral
+	
+	*goldFlower|goldFlowers
+		name:Gold Flower|Gold Flowers
+		desc:A mystical flower made of solid gold, granting users to produce even more coins.<//><.>Produces <b>400000</b> coins per second. <i>"We can't farm coins without our dear Gold Flower!</>They transform everything they see into <b>plentiful coins</b>!</>But they need a host, and few people actually agree to do so."</i>
+		cost:6000000 coins
+		req:3000000 coins:earned
+		on tick:
+			yield 400000 coins
+			yield 400000 goldFlowerCoins
+			yield 0.0004 dragonCoins
+			yield 0.0004 goldFlowerDrgnCoins
+		end
+		on earn:personHire is personHire+1
+		on lose:personHire is personHire-1
+		icon:icons[5,0] back[1,0]
+		tags:melee powerUp
+	
+	// LOCKED BUILDINGS
+	
+	*TEMPLATE
+		name:???
+		desc:<b>???</b><//></><.>???<//></><i>???</i>
+		tag:buildLocked
+	
+	*cloneVis
+		cost:100 coins
+		icon:icons[2,1] back[1,0]
+	
+	*machineVis
+		cost:7500 coins
+		req:1875 coins:earned
+		icon:icons[3,1] back[1,0]
+	
+	*hackedBlockVis
+		cost:200000 coins
+		req:50000 coins:earned
+		icon:icons[4,1] back[1,0]
+	
+	*goldFlowerVis
+		cost:6000000 coins
+		req:1500000 coins:earned
+		icon:icons[5,1] back[1,0]
+	
+	
+
+Upgrades
+	// THE TUTORIAL OF THIS GAME - DOES NOT COUNT AS AN UPGRADE
+	
+	*TEMPLATE
+		icon:icons[2,3] back[3,0]
+		tags:tutorial books
+	
+	*tut1
+		name:Coin Collecting for Dummies
+		desc:Welcome to <i>Coin Collector: Recollection Edition</i>, a remake of <i>Coin Collector</i>!</>There are <i>a lot</i> of changes from the Original in this remake, such as the Achievements (explained later).</>Please be sure to "purchase" these Upgrades to learn more about this game.</>Who knows? Maybe there's <#008020><i>a reward</i></#> if you read all of this...<//></><i>"I hope you enjoy this as much as I did playing the Original!"</i>
+	
+	*tut2
+		name:Chapter 1, Part 1 - The Graphics & Naming
+		desc:This chapter contains all changes from the Original to the Remake.</>Let's start with the obvious:</><.><b>The Graphics & Naming</b> - In the Original, the Buttons & Buildings are Images from other Sources, while the Achievements & Upgrades look like they're drawn in MSPaint. This has been changed in order to keep a consistent style.</>The names & descriptions have also been changed to either make more sense, or to fit in with the Mario Universe.
+		req:have tut1
+		icon:icons[3,3] back[3,0]
+	
+	*tut3
+		name:Chapter 1, Part 2 - Achievements
+		desc:<.><b>Achievements</b> - Earning Achievements now gives a buff to your overall production, which ranges from increasing your manual clicking power, to boosting certain buildings, to even making Shinies appear more often (explained later).</>Try your best to earn as many as you can!
+		req:have tut2
+		icon:icons[3,3] back[3,0]
+	
+	*tut4
+		name:Chapter 1, Part 3 - Upgrades
+		desc:<.><b>Upgrades</b> - The names for the Upgrades have been changed to better reflect what they do (in the Original, there were FOUR (4) "???" Upgrades, which they are all different!), as well as making Synergy Upgrades require TWO buildings to be at a certain level, rather than one building.
+		req:have tut3
+		icon:icons[3,3] back[3,0]
+	
+	*tut5
+		name:Chapter 2, Part 1 - Shinies
+		desc:This chapter contains new content NOT found in the Original.</>Such content includes:</><.><b>Shinies</b> - There was no Shinies in the Original (due to the fact that Old IGM doesn't handle Shinies <i>at all</i>), so as a way to make things interesting I've decided to add some Shinies to the game.
+		req:have tut4
+		icon:icons[3,3] back[3,0]
+	
+	*tut6
+		name:Chapter 2, Part 2 - New Buildings & Upgrades
+		desc:<.><b>Buildings</b> - There are a total of 10 Normal Buildings, 3 Special Buildings, 13 Objectives, and 16 Bonus Objectives in the Original; with that in mind, I plan on adding more Dark-Exclusive Buildings, and introduce a new branch of Building Types: Light.</>It is planned to be the polar opposite of Dark, with some Light-Exclusive Buildings.</><.><b>Upgrades</b> - This is pretty self explanitory; the new Buildings will have new Upgrades (some normal, some clicking-related, some Synergy), along with a branching path with in the Upgrades menu to let you choose which side you want to go for first.</>I have plans to make said Upgrade give information as to what Dark vs. Light does in terms of Production, and it is possible to switch to the other side later on (probably a Prestige thing).
+		req:have tut5
+		icon:icons[3,3] back[3,0]
+	
+	*tut7
+		name:Chapter 2, Part 3 - Achievements
+		desc:<.><b>Achievements</b> - Speaking of Buildings, Wizards were the only building that lacked Achievements of their own.</>They now have them here, with their own requirements.</>The new Buildings (& Upgrades) will also have their own Achievements exclusively to themselves.</>Much like before, these Achievements <i>also</i> have a buff when unlocked.
+		req:have tut6
+		icon:icons[3,3] back[3,0]
+	
+	*tut8
+		name:Chapter 3 - Misc. Info
+		desc:You can now switch between different screens to get more information, like how much Coins you've earned from clicking, or how many buildings you've owned (& people you've hired).</>There is also a Tracker that keeps track of how much Achievements & Upgrades you've purchased/earned.</>Please check often, as it may help <#008020>earn Achievements & Upgrades</#>!
+		req:have tut7
+		icon:icons[3,3] back[3,0]
+	
+	// Great thing about the naming scheme: I can call even more pages between 'tut8' and 'tutFinal', which can help greatly for providing extra information :)
+	*tutFinal
+		name:Final Chapter - End of the Tutorial
+		desc:Thank you so much for taking the time to read (or at least click 9 times);</>this was something I wanted to do since the New IGM came out, and I finally gotten around to doing this.</>Even if I don't end up uploading this publicly, I hope anything I do here I can adopt onto future projects.</></>For the reward, you get a <#008020>shiny new achievement</#>!</>Wear it with pride, and use this to help get a boost in production!
+		req:have tut8
+	
+	
+	
+	// TEMPLATE FOR REGULAR UPGRADES
+	
+	*TEMPLATE
+		on earn:upgrAmt is upgrAmt+1
+		on lose:upgrAmt is upgrAmt-1
+	
+	
+	
+	// TIME UPGRADES
+	
+	*timeUp1
+		name:Learning
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>0.0013%</b> more efficient every second</><.>Everything Else is <b>0.001%</b> more efficient every second<i></></>"Time is something very important, and thus choosing to be influenced by time is going to come in handy.</>We can fix our biggest mistakes!"</i>
+		cost:10000 coins
+		req:60 seconds
+		passive:
+			multiply coin yield of clone by (1.000013*seconds)
+			multiply cloneCoin yield of clone by (1.000013*seconds)
+			multiply dragonCoin yield of clone by (1.000013*seconds)
+			multiply cloneDrgnCoin yield of clone by (1.000013*seconds)
+			multiply coin yield of blockBrick by (1.00001*seconds)
+			multiply coinClickOA yield of blockBrick by (1.00001*seconds)
+			multiply coinClickAT yield of blockBrick by (1.00001*seconds)
+			multiply coinTotalOA yield of blockBrick by (1.00001*seconds)
+			multiply coinTotalAT yield of blockBrick by (1.00001*seconds)
+			multiply dragonCoin yield of blockDrgnCoin by (1.00001*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.00001*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.00001*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.00001*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.00001*seconds)
+			multiply coin yield of machine by (1.00001*seconds)
+			multiply machineCoin yield of machine by (1.00001*seconds)
+			multiply dragonCoin yield of machine by (1.00001*seconds)
+			multiply machineDrgnCoin yield of machine by (1.00001*seconds)
+			multiply coin yield of hackedBlock by (1.00001*seconds)
+			multiply hackedBlockCoin yield of hackedBlock by (1.00001*seconds)
+			multiply dragonCoin yield of hackedBlock by (1.00001*seconds)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.00001*seconds)
+			multiply coin yield of goldFlower by (1.00001*seconds)
+			multiply goldFlowerCoin yield of goldFlower by (1.00001*seconds)
+			multiply dragonCoin yield of goldFlower by (1.00001*seconds)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.00001*seconds)
+		end
+		icon:icons[2,5] num[1,0] back[3,0]
+		tags:timeUps
+	
+	*timeUp2
+		name:Third Industrial Revolution
+		desc:DESCRIPTION<//><.>Coin Machines are <b>twice</b> as efficient</></><i>"Machines with gears?</>FREAKING GEARS?!</>This is the modern age, why the h<b></b>e<b></b>l<b></b>l would we use gears?!"</i>
+		cost:100000 coins
+		req:600 seconds and 1 machine
+		passive:
+			multiply coin yield of machine by 2
+			multiply machineCoin yield of machine by 2 
+			multiply dragonCoin yield of machine by 2
+			multiply machineDrgnCoin yield of machine by 2
+		end
+		icon:icons[2,5] num[2,0] back[3,0]
+		tags:timeUps
+	
+	*timeUp3
+		name:Personalized Blocks
+		desc:Every Block is Personalized.<//><.>Hacked Blocks are <b>twice</b> as efficient<i>"We can make personalized blocks that are easier to hack!</>Why haven't we thought of this before?" ~ Master Brack, Head of the Hacking project</></>"Because it's what this upgrade string is supposed to do, d<b></b>u<b></b>m<b></b>b<b></b>a<b></b>s<b></b>s." ~ Everyone else</i>
+		cost:1000000 coins
+		req:1200 seconds and 1 hackedBlock
+		passive:
+			multiply coin yield of hackedBlock by 2
+			multiply hackedBlockCoin yield of hackedBlock by 2
+			multiply dragonCoin yield of hackedBlock by 2
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 2
+		end
+		icon:icons[2,5] num[3,0] back[3,0]
+		tags:timeUps
+	
+	*timeUp4
+		name:Double Shot
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>twice</b> as efficient</><i>"Why does everything in this string makes me want to facepalm?" ~ Master Goud, Head of the Gold Flower project</>"Because lennonluiz0907 was stupid enough to not put those things into original strings." ~ Everyone else</i>
+		cost:10000000 coins
+		req:1800 seconds and 1 goldFlower
+		passive:
+			multiply coin yield of goldFlower by 2
+			multiply goldFlowerCoin yield of goldFlower by 2
+			multiply dragonCoin yield of goldFlower by 2
+			multiply goldFlowerDrgnCoin yield of goldFlower by 2
+		end
+		icon:icons[2,5] num[4,0] back[3,0]
+		tags:timeUps
+	
+	*timeUp5
+		name:Training
+		desc:DESCRIPTION<//><.>Everything is <b>0.0005%</b> more efficient every second<i>"Yeah, right.."</i>
+		cost:1000000000 coins
+		req:2700 seconds
+		passive:
+			multiply coin yield of clone by (1.000005*seconds)
+			multiply cloneCoin yield of clone by (1.000005*seconds)
+			multiply dragonCoin yield of clone by (1.000005*seconds)
+			multiply cloneDrgnCoin yield of clone by (1.000005*seconds)
+			multiply coin yield of blockBrick by (1.000005*seconds)
+			multiply coinClickOA yield of blockBrick by (1.000005*seconds)
+			multiply coinClickAT yield of blockBrick by (1.000005*seconds)
+			multiply coinTotalOA yield of blockBrick by (1.000005*seconds)
+			multiply coinTotalAT yield of blockBrick by (1.000005*seconds)
+			multiply dragonCoin yield of blockDrgnCoin by (1.000005*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.000005*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.000005*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.000005*seconds)
+			multiply coinClickOA yield of blockDrgnCoin by (1.000005*seconds)
+			multiply coin yield of machine by (1.000005*seconds)
+			multiply machineCoin yield of machine by (1.000005*seconds)
+			multiply dragonCoin yield of machine by (1.000005*seconds)
+			multiply machineDrgnCoin yield of machine by (1.000005*seconds)
+			multiply coin yield of hackedBlock by (1.000005*seconds)
+			multiply hackedBlockCoin yield of hackedBlock by (1.000005*seconds)
+			multiply dragonCoin yield of hackedBlock by (1.000005*seconds)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.000005*seconds)
+			multiply coin yield of goldFlower by (1.000005*seconds)
+			multiply goldFlowerCoin yield of goldFlower by (1.000005*seconds)
+			multiply dragonCoin yield of goldFlower by (1.000005*seconds)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.000005*seconds)
+		end
+		icon:icons[2,5] num[5,0] back[3,0]
+		tags:timeUps
+	
+	
+	
+	// MANUAL CLICKING UPGRADES
+	
+	*clickUp1
+		name:Multi-Hit Combo
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>x5</b> more efficient</><i>"So when you hit the block, you actually hit it four more times before landing.</>Pretty epic, right?"</i>
+		cost:2525 coins
+		req:2500 coinClickOA:earned
+		passive:
+			multiply coinClickOA yield of blockBrick by 5
+			multiply coinClickAT yield of blockBrick by 5
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by 5
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by 5
+		end
+		icon:icons[3,5] num[1,0] back[3,0]
+		tags:clickUps
+	
+	*clickUp2
+		name:Better Blocks
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>x20</b> more efficient</><i>"Better blocks mean more coins!</>Hooray!"</i>
+		cost:252525 coins
+		req:25000 coinClickOA:earned
+		passive:
+			multiply coinClickOA yield of blockBrick by 20
+			multiply coinClickAT yield of blockBrick by 20
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by 20
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by 20
+		end
+		icon:icons[3,5] num[2,0] back[3,0]
+		tags:clickUps
+	
+	*clickUp3
+		name:Better Combos
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>x10</b> more efficient</><i>"So... fast..."</i>
+		cost:25252525 coins
+		req:2500000 coinClickOA:earned
+		passive:
+			multiply coinClickOA yield of blockBrick by 10
+			multiply coinClickAT yield of blockBrick by 10
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by 10
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by 10
+		end
+		icon:icons[3,5] num[3,0] back[3,0]
+		tags:clickUps
+	
+	*clickUp4
+		name:Stronger Attacks
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>twice</b> as efficient</><i>"With stronger attacks, this somehow make the block output more coins.</>Don't fully understand why, but I'm not complaining!"</i>
+		cost:2525252525 coins
+		req:250000000 coinClickOA:earned
+		passive:
+			multiply coinClickOA yield of blockBrick by 2
+			multiply coinClickAT yield of blockBrick by 2
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by 2
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by 2
+		end
+		icon:icons[3,5] num[4,0] back[3,0]
+		tags:clickUps
+	
+	*clickUp5
+		name:"Glue" Attack
+		desc:DESCRIPTION<//><.>Block Punching is <b>twice</b> as efficient</><i>"The first teaching of Blockjitsu.</>If you manage to "glue" yourself to the block, you get coins faster."</i>
+		cost:252525252525 coins
+		req:25000000000 coinClickOA:earned
+		passive:
+			multiply coinClickOA yield of blockBrick by 2
+			multiply coinClickAT yield of blockBrick by 2
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by 2
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by 2
+		end
+		icon:icons[3,5] num[5,0] back[3,0]
+		tags:clickUps
+	
+	
+	
+	// CLONE UPGRADES
+	
+	*cloneUp1
+		name:Increasing Intelligence
+		desc:1-UP Mushrooms are <b>30%</b> more efficient.<//></><i>"The clones are starting to get more intelligent.</>Just a little, though."</i>
+		cost:500 coins
+		req:1 clone
+		passive:
+			multiply coin yield of clone by 1.3
+			multiply cloneCoin yield of clone by 1.3
+			multiply dragonCoin yield of clone by 1.3
+			multiply cloneDrgnCoin yield of clone by 1.3
+		end
+		icon:icons[2,0] num[1,0] back[3,0]
+		tags:cloneUps
+	
+	*cloneUp2
+		name:Run Button
+		desc:1-UP Mushrooms are <b>60%</b> more efficient.<//></><i>"The clones couldn't run; now they can.</>That seriously helps to get to the next block or coin faster, y'know."</i>
+		cost:2500 coins
+		req:10 clones
+		passive:
+			multiply coin yield of clone by 1.6
+			multiply cloneCoin yield of clone by 1.6
+			multiply dragonCoin yield of clone by 1.6
+			multiply cloneDrgnCoin yield of clone by 1.6
+		end
+		icon:icons[2,0] num[2,0] back[3,0]
+		tags:cloneUps
+	
+	*cloneUp3
+		name:Even Higher Intelligence
+		desc:1-UP Mushrooms are <b>twice</b> as efficient.<//></><i>"The clones can easily recognize Brick-Blocks now, and they now mostly go for the Question-Mark Blocks."</i>
+		cost:15000 coins
+		req:20 clones
+		passive:
+			multiply coin yield of clone by 2
+			multiply cloneCoin yield of clone by 2
+			multiply dragonCoin yield of clone by 2
+			multiply cloneDrgnCoin yield of clone by 2
+		end
+		icon:icons[2,0] num[3,0] back[3,0]
+		tags:cloneUps
+	
+	*cloneUp4
+		name:Faster Clones
+		desc:1-UP Mushrooms are <b>x2.5 times</b> as efficient.<//></><i>"The clones got pretty fast now; seriously."</i>
+		cost:250000 coins
+		req:40 clones
+		passive:
+			multiply coin yield of clone by 2.5
+			multiply cloneCoin yield of clone by 2.5
+			multiply dragonCoin yield of clone by 2.5
+			multiply cloneDrgnCoin yield of clone by 2.5
+		end
+		icon:icons[2,0] num[4,0] back[3,0]
+		tags:cloneUps
+	
+	*cloneUp5
+		name:Even Faster Clones
+		desc:1-UP Mushrooms are <b>x3 times</b> as efficient.<//></><i>"The clones are now faster than a single person."</i>
+		cost:7500000 coins
+		req:70 clones
+		passive:
+			multiply coin yield of clone by 3
+			multiply cloneCoin yield of clone by 3
+			multiply dragonCoin yield of clone by 3
+			multiply cloneDrgnCoin yield of clone by 3
+		end
+		icon:icons[2,0] num[5,0] back[3,0]
+		tags:cloneUps
+	
+	
+	
+	// COIN MACHINE UPGRADES
+	
+	*machineUp1
+		name:System Fiddling
+		desc:DESCRIPTION<//><.>Coin Machines are <b>30%</b> more efficient<//></><i>"The machines produce coins a little faster, thanks to all those new gears and stuff."</i>
+		cost:18750 coins
+		req:1 machine
+		passive:
+			multiply coin yield of machine by 1.3
+			multiply machineCoin yield of machine by 1.3
+			multiply dragonCoin yield of machine by 1.3
+			multiply machineDrgnCoin yield of machine by 1.3
+		end
+		icon:icons[3,0] num[1,0] back[3,0]
+		tags:machineUps
+	
+	*machineUp2
+		name:Connection Improvement
+		desc:DESCRIPTION<//><.>Coin Machines are <b>60%</b> more efficient<//></><i>*dial-up connection sounds*</i>
+		cost:93750 coins
+		req:10 machines
+		passive:
+			multiply coin yield of machine by 1.6
+			multiply machineCoin yield of machine by 1.6
+			multiply dragonCoin yield of machine by 1.6
+			multiply machineDrgnCoin yield of machine by 1.6
+		end
+		icon:icons[3,0] num[2,0] back[3,0]
+		tags:machineUps
+	
+	*machineUp3
+		name:First-Tier Machine Analysis
+		desc:DESCRIPTION<//><.>Coin Machines are <b>2 times</b> as efficient<//></><i>"I think we are understanding what is happening on this machine.</>It's definitely by Internet, but... what is the program?</>We need answers!</>Halp!"</i>
+		cost:562500 coins
+		req:20 machines
+		passive:
+			multiply coin yield of machine by 2
+			multiply machineCoin yield of machine by 2
+			multiply dragonCoin yield of machine by 2
+			multiply machineDrgnCoin yield of machine by 2
+		end
+		icon:icons[3,0] num[3,0] back[3,0]
+		tags:machineUps
+	
+	*machineUp4
+		name:System Optimization
+		desc:DESCRIPTION<//><.>Coin Machines are <b>2.5 times</b> as efficient<//></><i>"The speed of the machines is starting to get way beyond what we can understand, actually.."</i>
+		cost:18750000 coins
+		req:40 machines
+		passive:
+			multiply coin yield of machine by 2.5
+			multiply machineCoin yield of machine by 2.5
+			multiply dragonCoin yield of machine by 2.5
+			multiply machineDrgnCoin yield of machine by 2.5
+		end
+		icon:icons[3,0] num[4,0] back[3,0]
+		tags:machineUps
+	
+	*machineUp5
+		name:Second-Tier Machine Analysis
+		desc:DESCRIPTION<//><.>Coin Machines are <b>3 times</b> as efficient<//></><i>"Our answers are starting to get more and more plentiful...</>But the answer we NEED is still way beyond human comprehension.</>Why??"</i>
+		cost:562500000 coins
+		req:70 machines
+		passive:
+			multiply coin yield of machine by 3
+			multiply machineCoin yield of machine by 3
+			multiply dragonCoin yield of machine by 3
+			multiply machineDrgnCoin yield of machine by 3
+		end
+		icon:icons[3,0] num[5,0] back[3,0]
+		tags:machineUps
+	
+	
+	
+	// HACKED ?-BLOCK UPGRADES
+	
+	*blockUp1
+		name:Better Control over the Blocks
+		desc:DESCRIPTION<//><.>Hacked Blocks are <b>30%</b> more efficient<//></><i>"Holy cow, the blocks went haywire!</>Wait, i think i can take advantage of this..."</i>
+		cost:1000000 coins
+		req:1 hackedBlock
+		passive:
+			multiply coin yield of hackedBlock by 1.3
+			multiply hackedBlockCoin yield of hackedBlock by 1.3
+			multiply dragonCoin yield of hackedBlock by 1.3
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 1.3
+		end
+		icon:icons[4,0] num[1,0] back[3,0]
+		tags:blockUps
+	
+	*blockUp2
+		name:Faster Blocks
+		desc:DESCRIPTION<//><.>Hacked Blocks are <b>60%</b> more efficient<//></><i>"OH L<b></b>O<b></b>R<b></b>D, SO MUCH COINS"</>:D</i>
+		cost:5000000 coins
+		req:10 hackedBlocks
+		passive:
+			multiply coin yield of hackedBlock by 1.6
+			multiply hackedBlockCoin yield of hackedBlock by 1.6
+			multiply dragonCoin yield of hackedBlock by 1.6
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 1.6
+		end
+		icon:icons[4,0] num[2,0] back[3,0]
+		tags:blockUps
+	
+	*blockUp3
+		name:Even Faster Blocks
+		desc:DESCRIPTION<//><.>Hacked Blocks are <b>twice</b> as efficient<//></><i>"CLOSE DA FLOODGATES!"</i>
+		cost:30000000 coins
+		req:20 hackedBlocks
+		passive:
+			multiply coin yield of hackedBlock by 2
+			multiply hackedBlockCoin yield of hackedBlock by 2
+			multiply dragonCoin yield of hackedBlock by 2
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 2
+		end
+		icon:icons[4,0] num[3,0] back[3,0]
+		tags:blockUps
+	
+	*blockUp4
+		name:FASTER BLOCKER...S
+		desc:DESCRIPTION<//><.>Hacked Blocks are <b>2.5 times</b> as efficient<//></><i>"LAST BUT NOT LEAST, DON'T PANIC!"</>*panics*</i>
+		cost:500000000 coins
+		req:40 hackedBlocks
+		passive:
+			multiply coin yield of hackedBlock by 2.5
+			multiply hackedBlockCoin yield of hackedBlock by 2.5
+			multiply dragonCoin yield of hackedBlock by 2.5
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 2.5
+		end
+		icon:icons[4,0] num[4,0] back[3,0]
+		tags:blockUps
+	
+	*blockUp5
+		name:ACTUAL control over the blocks
+		desc:DESCRIPTION<//><.>Hacked Blocks are <b>3 times</b> as efficient<//></><i>"Everything's under control!</>Calm down."</i>
+		cost:15000000000 coins
+		req:70 hackedBlocks
+		passive:
+			multiply coin yield of hackedBlock by 3
+			multiply hackedBlockCoin yield of hackedBlock by 3
+			multiply dragonCoin yield of hackedBlock by 3
+			multiply hackedBlockDrgnCoin yield of hackedBlock by 3
+		end
+		icon:icons[4,0] num[5,0] back[3,0]
+		tags:blockUps
+	
+	
+	
+	// GOLD FLOWER UPGRADES
+	
+	*goldFlowerUp1
+		name:old Flower Analysis
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>30%</b> more efficient<//></><i>"Now we know that enemies give big amounts of coins when defeated by a Gold Flower."</i>
+		cost:30000000 coins
+		req:1 goldFlower
+		passive:
+			multiply coin yield of goldFlower by 1.3
+			multiply goldFlowerCoin yield of goldFlower by 1.3
+			multiply dragonCoin yield of goldFlower by 1.3
+			multiply goldFlowerDrgnCoin yield of goldFlower by 1.3
+		end
+		icon:icons[5,0] num[1,0] back[3,0]
+		tags:goldFlowerUps
+	
+	*goldFlowerUp2
+		name:Splash Effect
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>60%</b> more efficient<//></><i>"The golden fireballs were supposed to have a splash effect, but never had.</>This was fixed, thanks to </i><b>NAME REDACTED</b><i>."</i>
+		cost:150000000 coins
+		req:10 goldFlowers
+		passive:
+			multiply coin yield of goldFlower by 1.6
+			multiply goldFlowerCoin yield of goldFlower by 1.6
+			multiply dragonCoin yield of goldFlower by 1.6
+			multiply goldFlowerDrgnCoin yield of goldFlower by 1.6
+		end
+		icon:icons[5,0] num[2,0] back[3,0]
+		tags:goldFlowerUps
+	
+	*goldFlowerUp3
+		name:Piercing Fire
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>twice</b> as efficient<//></><i>"The fireballs now pierce through a few enemies before exploding."</i>
+		cost:900000000 coins
+		req:20 goldFlowers
+		passive:
+			multiply coin yield of goldFlower by 2
+			multiply goldFlowerCoin yield of goldFlower by 2
+			multiply dragonCoin yield of goldFlower by 2
+			multiply goldFlowerDrgnCoin yield of goldFlower by 2
+		end
+		icon:icons[5,0] num[3,0] back[3,0]
+		tags:goldFlowerUps
+	
+	*goldFlowerUp4
+		name:Better Splash Effect
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>2.5 times</b> as efficient<//></><i>"The fireballs have an even bigger splash effect now."</i>
+		cost:15000000000 coins
+		req:40 goldFlowers
+		passive:
+			multiply coin yield of goldFlower by 2.5
+			multiply goldFlowerCoin yield of goldFlower by 2.5
+			multiply dragonCoin yield of goldFlower by 2.5
+			multiply goldFlowerDrgnCoin yield of goldFlower by 2.5
+		end
+		icon:icons[5,0] num[4,0] back[3,0]
+		tags:goldFlowerUps
+	
+	*goldFlowerUp5
+		name:Long-Lasting Flowers
+		desc:DESCRIPTION<//><.>Gold Flowers are <b>3 times</b> as efficient<//></><i>"The flowers actually carry over between levels now.</>Yay!"</i>
+		cost:450000000000 coins
+		req:70 goldFlowers
+		passive:
+			multiply coin yield of goldFlower by 3
+			multiply goldFlowerCoin yield of goldFlower by 3
+			multiply dragonCoin yield of goldFlower by 3
+			multiply goldFlowerDrgnCoin yield of goldFlower by 3
+		end
+		icon:icons[5,0] num[5,0] back[3,0]
+		tags:goldFlowerUps
+	
+	
+	
+	// SYNERGY UPGRADES
+	
+	
+	// MANUAL CLICKING & BUILDINGS
+	
+	*clickCloneUp1
+		name:Chime Of The Heavens
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>1.5%</b> more efficient per 1-Up Mushroom<//></><i>"With this add-on, you'll get a 1-UP sound effect every time you hit the block!</>BEST MORALE BONUS EVER."</></>//EDITOR'S NOTE: You can't enter sound effects into Idle Game Maker, and I think it's for the best.</>Peace.</i>
+		cost:1000000 coins
+		req:32 clones
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.015*clones)
+			multiply coinClickAT yield of blockBrick by (1.015*clones)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.015*clones)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.015*clones)
+		end
+		//icon:
+		tags:clickSynergy cloneSynergy
+	
+	*clickCloneUp2
+		name:Clone Helpers
+		desc:DESCRIPTION<//><.>Block Punching is <b>0.3%</b> more efficient per 1-Up Mushroom<//></><i>"The clones can actively help you to hit that block, and get richer!"</></>//EDITOR'S NOTE: AN ORIGINAL IDEA, FOR ONCE!</i>
+		cost:100000 dragonCoins
+		req:256 clones
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.003*clones)
+			multiply coinClickAT yield of blockBrick by (1.003*clones)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.003*clones)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.003*clones)
+		end
+		//icon:
+		tags:clickSynergy cloneSynergy
+	
+	*clickMachineUp1
+		name:Interconnection
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>1.45%</b> more efficient per Coin Machine<//></><i>"By fiddling with the internal machine of the block, you get more coins for each machine you own!"</i>
+		cost:100000000 coins
+		req:32 machines
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.0145*machines)
+			multiply coinClickAT yield of blockBrick by (1.0145*machines)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.0145*machines)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.0145*machines)
+		end
+		//icon:
+		tags:clickSynergy machineSynergy
+	
+	*clickMachineUp2
+		name:Coin-Block Study
+		desc:DESCRIPTION<//><.>Block Punching is <b>0.29%</b> more efficient per Coin Machine<//></><i>"Uh... isn't that a little overboard?"</>"I guess we could get <u>	GOLDEN</u> with our research."</i>
+		cost:10000000 dragonCoins
+		req:256 machines
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.0029*machines)
+			multiply coinClickAT yield of blockBrick by (1.0029*machines)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.0029*machines)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.0029*machines)
+		end
+		//icon:
+		tags:clickSynergy machineSynergy
+	
+	*clickBlockUp1
+		name:Hacked Coin Blocks
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>1.4%</b> more efficient per Hacked ?-Block<//></><i>"I'VE BEEN WAITING TO DO THIS THE ENTIRE TIME!"</></>//EDITOR'S NOTE: I wish I could've made them all cost Dragon Coins :(</i>
+		cost:2 dragonCoins
+		req:32 hackedBlocks
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.014*hackedBlocks)
+			multiply coinClickAT yield of blockBrick by (1.014*hackedBlocks)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.014*hackedBlocks)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.014*hackedBlocks)
+		end
+		//icon:
+		tags:clickSynergy blockSynergy
+	
+	*clickBlockUp2
+		name:Hacking Improvement
+		desc:DESCRIPTION<//><.>Block Punching is <b>0.28%</b> more efficient per Hacked ?-Block<//></><i>"That's useful too, I guess.."</i>
+		cost:200000000 dragonCoins
+		req:256 hackedBlocks
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.0028*hackedBlocks)
+			multiply coinClickAT yield of blockBrick by (1.0028*hackedBlocks)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.0028*hackedBlocks)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.0028*hackedBlocks)
+		end
+		//icon:
+		tags:clickSynergy blockSynergy
+	
+	*clickFlowerUp1
+		name:Gold(Painted) Blocks
+		desc:DESCRIPTION<//><.>Manual Clicking is <b>1.35%</b> more efficient per Gold Flower<//></><i>"Morale Bonus!"</></>//EDITOR'S NOTE: I'm too lazy to actually implement this.</>For now.</i>
+		cost:15 dragonCoins
+		req:32 goldFlowers
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.0135*goldFlowers)
+			multiply coinClickAT yield of blockBrick by (1.0135*goldFlowers)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.0135*goldFlowers)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.0135*goldFlowers)
+		end
+		//icon:
+		tags:clickSynergy goldFlowerSynergy
+	
+	*clickFlowerUp2
+		name:ACTUALLY HITTING THE BLOCKS WITH THE GOLD FLOWERS
+		desc:DESCRIPTION<//><.>Block Punching is <b>0.27%</b> more efficient per Gold Flower<//></><i>"D'oh, I missed." ~ Wario</i>
+		cost:1500000000 dragonCoins
+		req:256 goldFlowers
+		passive:
+			multiply coinClickOA yield of blockBrick by (1.0027*goldFlowers)
+			multiply coinClickAT yield of blockBrick by (1.0027*goldFlowers)
+			multiply drgnCoinTotalOA yield of blockDrgnCoin by (1.0027*goldFlowers)
+			multiply drgnCoinTotalAT yield of blockDrgnCoin by (1.0027*goldFlowers)
+		end
+		//icon:
+		tags:clickSynergy goldFlowerSynergy
+	
+	// COIN MACHINES & HACKED ?-BLOCKS
+	
+	*blockMachineUp1
+		name:Hacking Improvement
+		desc:DESCRIPTION<//><.>Coin Machines are <b>5%</b> more efficient per Hacked Block</><.>Hacked Blocks are <b>4%</b> more efficient per Coin Machine<//></><i>"With higher-tier hacking, we can not only hack the blocks with higher control and higher output, but we can even hack the Coin Machines to increase their speed! It's a win/win!"</i>
+		cost:7520752075 coins
+		req:50 machines and 50 hackedBlocks
+		passive:
+			multiply coin yield of machine by (1.05*hackedBlock)
+			multiply machineCoin yield of machine by (1.05*hackedBlock)
+			multiply dragonCoin yield of machine by (1.05*hackedBlock)
+			multiply machineDrgnCoin yield of machine by (1.05*hackedBlock)
+			multiply coin yield of hackedBlock by (1.04*machine)
+			multiply hackedBlockCoin yield of hackedBlock by (1.04*machine)
+			multiply dragonCoin yield of hackedBlock by (1.04*machine)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.04*machine)
+		end
+		//icon:
+		tags:machineSynergy blockSynergy
+	
+	*blockMachineUp2
+		name:Merging
+		desc:DESCRIPTION<//><.>Coin Machines are <b>4%</b> more efficient per Hacked Block</><.>Hacked Blocks are <b>3%</b> more efficient per Coin Machine<//></><i>"Machines made of Hacked Blocks, and Hacked Blocks with micro-machines inside.</>Welp."</i>
+		cost:7520752075207520 coins
+		req:300 machines and 300 hackedBlocks
+		passive:
+			multiply coin yield of machine by (1.04*hackedBlock)
+			multiply machineCoin yield of machine by (1.04*hackedBlock)
+			multiply dragonCoin yield of machine by (1.04*hackedBlock)
+			multiply machineDrgnCoin yield of machine by (1.04*hackedBlock)
+			multiply coin yield of hackedBlock by (1.03*machine)
+			multiply hackedBlockCoin yield of hackedBlock by (1.03*machine)
+			multiply dragonCoin yield of hackedBlock by (1.03*machine)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.03*machine)
+		end
+		//icon:
+		tags:machineSynergy blockSynergy
+	
+	*blockMachineUp3
+		name:NANOMACHINES
+		desc:DESCRIPTION<//><.>Coin Machines are <b>2.5%</b> more efficient per Hacked Block</><.>Hacked Blocks are <b>2%</b> more efficient per Coin Machine<//></><i>"I can't deny that this sounds awesome."</i>
+		cost:7.52e+28 coins
+		req:600 machines and 600 hackedBlocks
+		passive:
+			multiply coin yield of machine by (1.025*hackedBlock)
+			multiply machineCoin yield of machine by (1.025*hackedBlock)
+			multiply dragonCoin yield of machine by (1.025*hackedBlock)
+			multiply machineDrgnCoin yield of machine by (1.025*hackedBlock)
+			multiply coin yield of hackedBlock by (1.02*machine)
+			multiply hackedBlockCoin yield of hackedBlock by (1.02*machine)
+			multiply dragonCoin yield of hackedBlock by (1.02*machine)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.02*machine)
+		end
+		//icon:
+		tags:machineSynergy blockSynergy
+	
+	*blockMachineUp4
+		name:Hacked Blochines
+		desc:DESCRIPTION<//><.>Coin Machines are <b>1.75%</b> more efficient per Hacked Block</><.>Hacked Blocks are <b>1.5%</b> more efficient per Coin Machine<//></><i>"Don't ask.</>It's better if you don't."</i>
+		cost:7.52e+35 coins
+		req:900 machines and 900 hackedBlocks
+		passive:
+			multiply coin yield of machine by (1.0175*hackedBlock)
+			multiply machineCoin yield of machine by (1.0175*hackedBlock)
+			multiply dragonCoin yield of machine by (1.0175*hackedBlock)
+			multiply machineDrgnCoin yield of machine by (1.0175*hackedBlock)
+			multiply coin yield of hackedBlock by (1.015*machine)
+			multiply hackedBlockCoin yield of hackedBlock by (1.015*machine)
+			multiply dragonCoin yield of hackedBlock by (1.015*machine)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.015*machine)
+		end
+		//icon:
+		tags:machineSynergy blockSynergy
+	
+	*blockMachineUp5
+		name:Block Fusion
+		desc:DESCRIPTION<//><.>Coin Machines are <b>1.4%</b> more efficient per Hacked Block. Hacked Blocks are <b>1.3%</b> more efficient per Coin Machine<//></><i>"The machines started glowing..</>Is..is that a <u>good</u> thing??"</i>
+		cost:7.52e+49 coins
+		req:1300 machines and 1300 hackedBlocks
+		passive:
+			multiply coin yield of machine by (1.014*hackedBlock)
+			multiply machineCoin yield of machine by (1.014*hackedBlock)
+			multiply dragonCoin yield of machine by (1.014*hackedBlock)
+			multiply machineDrgnCoin yield of machine by (1.014*hackedBlock)
+			multiply coin yield of hackedBlock by (1.013*machine)
+			multiply hackedBlockCoin yield of hackedBlock by (1.013*machine)
+			multiply dragonCoin yield of hackedBlock by (1.013*machine)
+			multiply hackedBlockDrgnCoin yield of hackedBlock by (1.013*machine)
+		end
+		//icon:
+		tags:machineSynergy blockSynergy
+	
+	// 1-UP MUSHROOMS & GOLD FLOWERS
+	
+	*cloneFlowerUp1
+		name:Combined Powers
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>15%</b> more efficient per Gold Flower</><.>Gold Flowers are <b>2.5%</b> more efficient per 1-Up Mushroom<//></><i>"The clones now use Gold Flowers to get more coins faster, and when the users of the Gold Flower die, they are revived with the 1-Up Mushroom's intended power.</>May the 3-Up Moon shine on in our souls."</i>
+		cost:6010601060106 coins
+		req:50 clones and 50 goldFlowers
+		passive:
+			multiply coin yield of clone by (1.15*goldFlower)
+			multiply cloneCoin yield of clone by (1.15*goldFlower)
+			multiply dragonCoin yield of clone by (1.15*goldFlower)
+			multiply cloneDrgnCoin yield of clone by (1.15*goldFlower)
+			multiply coin yield of goldFlower by (1.025*clone)
+			multiply goldFlowerCoin yield of goldFlower by (1.025*clone)
+			multiply dragonCoin yield of goldFlower by (1.025*clone)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.025*clone)
+		end
+		//icon:
+		tags:cloneSynergy goldFlowerSynergy
+	
+	*cloneFlowerUp2
+		name:Gold Brick Box
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>10%</b> more efficient per Gold Flower</><.>Gold Flowers are <b>2%</b> more efficient per 1-Up Mushroom<//></><i>"Gold Brick Box is now activated instantly when you touch the flower, making coins appear while you move.</>This is certainly useful for the clones, and the normal users."</i>
+		cost:601060106010601060 coins
+		req:300 clones and 300 goldFlowers
+		passive:
+			multiply coin yield of clone by (1.1*goldFlower)
+			multiply cloneCoin yield of clone by (1.1*goldFlower)
+			multiply dragonCoin yield of clone by (1.1*goldFlower)
+			multiply cloneDrgnCoin yield of clone by (1.1*goldFlower)
+			multiply coin yield of goldFlower by (1.02*clone)
+			multiply goldFlowerCoin yield of goldFlower by (1.02*clone)
+			multiply dragonCoin yield of goldFlower by (1.02*clone)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.02*clone)
+		end
+		//icon:
+		tags:cloneSynergy goldFlowerSynergy
+	
+	*cloneFlowerUp3
+		name:Gold 2-Up Flower Feather Mushrooms
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>5%</b> more efficient per Gold Flower</><.>Gold Flowers are <b>1.5%</b> more efficient per 1-Up Mushroom<//></><i>"This looks amazing."</i>
+		cost:6.01e+29 coins
+		req:600 clones and 600 goldFlowers
+		passive:
+			multiply coin yield of clone by (1.05*goldFlower)
+			multiply cloneCoin yield of clone by (1.05*goldFlower)
+			multiply dragonCoin yield of clone by (1.05*goldFlower)
+			multiply cloneDrgnCoin yield of clone by (1.05*goldFlower)
+			multiply coin yield of goldFlower by (1.015*clone)
+			multiply goldFlowerCoin yield of goldFlower by (1.015*clone)
+			multiply dragonCoin yield of goldFlower by (1.015*clone)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.015*clone)
+		end
+		//icon:
+		tags:cloneSynergy goldFlowerSynergy
+	
+	*cloneFlowerUp4
+		name:Diamond 3-Up Flower Feather Star Leaf Mushrooms
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>2.5%</b> more efficient per Gold Flower</><.>Gold Flowers are <b>1.25%</b> more efficient per 1-Up Mushroom<//></><i>"This looks way too d<b></b>a<b></b>m<b></b>n cool."</i>
+		cost:6.01e+37 coins
+		req:900 clones and 900 goldFlowers
+		passive:
+			multiply coin yield of clone by (1.025*goldFlower)
+			multiply cloneCoin yield of clone by (1.025*goldFlower)
+			multiply dragonCoin yield of clone by (1.025*goldFlower)
+			multiply cloneDrgnCoin yield of clone by (1.025*goldFlower)
+			multiply coin yield of goldFlower by (1.0125*clone)
+			multiply goldFlowerCoin yield of goldFlower by (1.0125*clone)
+			multiply dragonCoin yield of goldFlower by (1.0125*clone)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.0125*clone)
+		end
+		//icon:
+		tags:cloneSynergy goldFlowerSynergy
+	
+	*cloneFlowerUp5
+		name:Hyzem's Mushrooms Of Glory
+		desc:DESCRIPTION<//><.>1-Up Mushrooms are <b>1%</b> more efficient per Gold Flower</><.>Gold Flowers are <b>0.8%</b> more efficient per 1-Up Mushroom<//></><i>"If you think of anything, Wall Destroyer Universe's Old World made it better.</>It's a fact."</i>
+		cost:6.01e+50 coins
+		req:1300 clones and 1300 goldFlowers
+		passive:
+			multiply coin yield of clone by (1.01*goldFlower)
+			multiply cloneCoin yield of clone by (1.01*goldFlower)
+			multiply dragonCoin yield of clone by (1.01*goldFlower)
+			multiply cloneDrgnCoin yield of clone by (1.01*goldFlower)
+			multiply coin yield of goldFlower by (1.008*clone)
+			multiply goldFlowerCoin yield of goldFlower by (1.008*clone)
+			multiply dragonCoin yield of goldFlower by (1.008*clone)
+			multiply goldFlowerDrgnCoin yield of goldFlower by (1.008*clone)
+		end
+		//icon:
+		tags:cloneSynergy goldFlowerSynergy
+
+Achievements
+	*TEMPLATE
+		on earn:yield 1 achAmt
+	
+	// TUTORIAL-EXCLUSIVE
+	
+	*tutAch
+		name:Graduation
+		desc:Read <b>all the pages</b> in the <i>"Coin Collecting For Dummies"</i> Book.<//></><.>Increases All Production by 1%<//></><i>"Knowledge is (literally) Power."</i>
+		req:have tutFinal
+		passive:
+			increase yield of coin by .01
+			increase coin yield of tag:melee by .01
+		end
+		icon:icons[2,3] num[0,0] back[2,0]
+		tags:tutorial
+	
+	// TOTAL TIME
+	
+	*timeAch1
+		name:Ready, Set, Go!
+		desc:Play the game for 1 Minute!<//></><i>"You won't be disappointed."</i>
+		req:60 seconds
+		passive:
+		end
+		icon:icons[2,5] num[1,0] back[2,0]
+		tags:timeSpent
+	
+	*timeAch2
+		name:Just 10 more minutes, mommy!
+		desc:Played for 10 minutes!<//></><i>"Keep playing!"</i>
+		req:600 seconds
+		passive:
+		end
+		icon:icons[2,5] num[2,0] back[2,0]
+		tags:timeSpent
+	
+	*timeAch3
+		name:Snack Break
+		desc:Played for 30 minutes!<//></><i>"Keep going!</>I really appreciate it!"</i>
+		req:1800 seconds
+		passive:
+		end
+		icon:icons[2,5] num[3,0] back[2,0]
+		tags:timeSpent
+	
+	*timeAch4
+		name:OUT TO LUNCH
+		desc:Played for an hour!<//></><i>"Thanks for staying!"</>//EDITOR'S NOTE: The next ones are going to sound like something that i should give to the girl i'm in love with, not to place in a stupid game. :P</i>
+		req:3600 seconds
+		passive:
+		end
+		icon:icons[2,5] num[4,0] back[2,0]
+		tags:timeSpent
+	
+	*timeAch5
+		name:We didn't even start yet!
+		desc:Played for three hours!<//></><i>"It's been good to be here with you."</i>
+		req:10800 seconds
+		passive:
+		end
+		icon:icons[2,5] num[5,0] back[2,0]
+		tags:timeSpent
+	
+	// TOTAL COINS
+	
+	*coinAch1
+		name:First Coins
+		desc:Earn <b>1</b> Coin in One Ascension.<//></><.>Increases Manual Clicking by 0.005%<//></><i>"Or first coin, I guess."</i>
+		req:1 coinTotalOA:earned
+		passive:increase yield of coin by .00005
+		icon:icons[2,2] num[1,0] back[2,0]
+		tags:coinAsc
+	
+	// TOTAL CLONES
+	
+	*cloneAch1
+		name:Extra Life!
+		desc:Get <b>1</b> 1-Up Mushroom.<//></><.>Increases Manual Clicking by 0.005%<//></><i>"This is the beginning of a magical adventure." *teehee*</i>
+		req:1 clone
+		passive:increase yield of coin by .00005
+		icon:icons[2,0] num[1,0] back[2,0]
+		tags:cloneTotal
+	
+	*cloneAch2
+		name:That's Life
+		desc:Get <b>10</b> 1-Up Mushrooms.<//></><.>Increases Manual Clicking by 0.01%<//></><i>"Don't get used to those quotes."</i>
+		req:10 clones
+		passive:increase yield of coin by .0001
+		icon:icons[2,0] num[2,0] back[2,0]
+		tags:cloneTotal
+	
+	*cloneAch3
+		name:Live and Learn
+		desc:Get <b>40</b> 1-Up Mushrooms.<//></><.>Increases Manual Clicking by 0.02%<//></><i>"Get used to those crazy-a<b></b>s<b></b>s puns and references however." :P</i>
+		req:40 clones
+		passive:increase yield of coin by .0002
+		icon:icons[2,0] num[3,0] back[2,0]
+		tags:cloneTotal
+	
+	*cloneAch4
+		name:Live your Life
+		desc:Get <b>100</b> 1-Up Mushrooms.<//></><.>Increases Manual Clicking by 0.05%
+		req:100 clones
+		passive:increase yield of coin by .0005
+		icon:icons[2,0] num[4,0] back[2,0]
+		tags:cloneTotal
+	
+	*cloneAch5
+		name:I make a Living from this job
+		desc:Get <b>150</b> 1-Up Mushrooms.<//></><.>Increases Manual Clicking by 0.075%<//></><i>"Are you annoyed yet?</>I am."</i>
+		req:150 clones
+		passive:increase yield of coin by .00075
+		icon:icons[2,0] num[5,0] back[2,0]
+		tags:cloneTotal
+	
+	
+
+Shinies
+
+
+CSS
+	.thing-icon
+	{
+		width:64px;
+		height:64px;
+	}
