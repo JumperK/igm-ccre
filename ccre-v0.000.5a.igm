@@ -195,6 +195,7 @@ Buttons
 			yield 1 coinClickAT
 			yield 1 coinTotalOA
 			yield 1 coinTotalAT
+			yield 1 coinFortune
 		end
 		class:bigButton hasFlares
 	
@@ -209,6 +210,7 @@ Buttons
 			yield 0.00000001 drgnCoinClickAT
 			yield 0.00000001 drgnCoinTotalOA
 			yield 0.00000001 drgnCoinTotalAT
+			yield 0.00000001 drgnCoinFortune
 		end
 		hidden
 		class:bigButton hasFlares
@@ -402,6 +404,7 @@ Buildings
 		name:Surpass Toad's Fortune
 		desc:<i>"Since we started, we wanted to get richer than someone and brag about it."<//></></>(Note: This isn't the similarly-named animal; It's an actual species.)</i><//><.>Unlocks <b>Light Prognosticus & Dark Prognosticus</b> (Not available YET)
 		cost:10000000000 coinFortune
+		limit:1
 		on earn:
 			yield 10000000000 coinFortune
 			yield 20000000000 objFortune
@@ -430,8 +433,10 @@ Buildings
 		on tick:
 			yield 15 coins
 			yield 15 cloneCoins
+			yield 15 coinFortune
 			yield 0.000000015 dragonCoins
 			yield 0.000000015 cloneDrgnCoins
+			yield 0.000000015 drgnCoinFortune
 		end
 		on earn:personHire is personHire+1
 		on lose:personHire is personHire-1
@@ -440,42 +445,48 @@ Buildings
 	
 	*machine|machines
 		name:Coin Machine|Coin Machines
-		desc:A robust machine that produces coins for you.<//><.>Produces <b>1 Thousand Coins</b> per Second.<//></><i>"A machine that makes coins.</>It seems like they make them out of thin air...</>Ugh, let's stop thinking about that, before my head starts to hurt.."</i>
+		desc:A robust machine that produces coins for you.<//><.>Produces <b>750 Coins</b> per Second.<//></><i>"A machine that makes coins.</>It seems like they make them out of thin air...</>Ugh, let's stop thinking about that, before my head starts to hurt.."</i>
 		cost:7500 coins
 		req:3750 coins:earned
 		on tick:
 			yield 750 coins
 			yield 750 machineCoins
+			yield 750 coinFortune
 			yield 0.00000075 dragonCoins
 			yield 0.00000075 machineDrgnCoins
+			yield 0.00000075 drgnCoinFortune
 		end
 		icon:icons[3,0] back[1,0]
 		tags:industrial neutral
 	
 	*hackedBlock|hackedBlocks
 		name:Hacked ?-Block|Hacked ?-Blocks
-		desc:An untouched ?-Block, crudely hacked to produce coins for you.<//><.>Produces <b>20000 Coins</b> per Second. <i>"We hacked into the internal system of a ?-Block, an-</>HOLY SHIT, WHAT'S HAPPENING?!"</i>
+		desc:An untouched ?-Block, crudely hacked to produce coins for you.<//><.>Produces <b>20 Thousand Coins</b> per Second. <i>"We hacked into the internal system of a ?-Block, an-</>HOLY SHIT, WHAT'S HAPPENING?!"</i>
 		cost:200000 coins
 		req:100000 coins:earned
 		on tick:
 			yield 20000 coins
 			yield 20000 hackedBlockCoins
+			yield 20000 coinFortune
 			yield 0.00002 dragonCoins
 			yield 0.00002 hackedBlockDrgnCoins
+			yield 0.00002 drgnCoinFortune
 		end
 		icon:icons[4,0] back[1,0]
 		tags:industrial neutral
 	
 	*goldFlower|goldFlowers
 		name:Gold Flower|Gold Flowers
-		desc:A mystical flower made of solid gold, granting users to produce even more coins.<//><.>Produces <b>400000</b> coins per second. <i>"We can't farm coins without our dear Gold Flower!</>They transform everything they see into <b>plentiful coins</b>!</>But they need a host, and few people actually agree to do so."</i>
+		desc:A mystical flower made of solid gold, granting users to produce even more coins.<//><.>Produces <b>400 Thousand Coins</b> per Second. <i>"We can't farm coins without our dear Gold Flower!</>They transform everything they see into <b>plentiful coins</b>!</>But they need a host, and few people actually agree to do so."</i>
 		cost:6000000 coins
 		req:3000000 coins:earned
 		on tick:
 			yield 400000 coins
 			yield 400000 goldFlowerCoins
+			yield 400000 coinFortune
 			yield 0.0004 dragonCoins
 			yield 0.0004 goldFlowerDrgnCoins
+			yield 0.0004 drgnCoinFortune
 		end
 		on earn:personHire is personHire+1
 		on lose:personHire is personHire-1
