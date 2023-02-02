@@ -391,18 +391,9 @@ Buildings
 		on tick:
 			yield 1 second
 			if (coin:earned>49.5) hide cloneVis
-			if (coin:earned>3749.5)
-				hide machineVis
-				toast New Building Unlock!
-			end
-			if (coin:earned>99999.5)
-				hide hackedBlockVis
-				toast New Building Unlock!
-			end
-			if (coin:earned>2999999.5)
-				hide goldFlowerVis
-				toast New Building Unlock!
-			end
+			if (coin:earned>3749.5) hide machineVis
+			if (coin:earned>99999.5) hide hackedBlockVis
+			if (coin:earned>2999999.5) hide goldFlowerVis
 		end
 		always hidden
 	
