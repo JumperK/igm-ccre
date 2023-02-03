@@ -234,7 +234,7 @@ Resources
 		desc:maybe one day, this will be used to describe what this is</></></>today, however is not that day :P</><i>"sorry to dissapoint" - JumperTD</>¯\_(ツ)_/¯</i>
 		text:Coin[s?this]: [this]
 		icon:icons[2,2]
-		tag:mainRes
+		tags:coinRes reset
 	
 	*dragonCoin|dragonCoins
 		name:Dragon Coin|Dragon Coins
@@ -242,34 +242,37 @@ Resources
 		text:Dragon Coin[s?this]: [this]
 		icon:icons[3,2]
 		//req:
-		tag:mainRes
+		tags:drgnCoinRes reset
 	
 	*coinFortune
 		text:Fortune (Coins): [this]
 		icon:icons[4,2]
-		tag:mainRes
+		tags:coinRes reset
 	
 	*drgnCoinFortune
 		text:Fortune (Dragon Coins): [this]
 		icon:icons[5,2]
+		tags:drgnCoinRes reset
 
 	*fortuneToken
 		text:Fortune Token[s?this]: [this]
+		tags:tokenRes reset
 	
 	// STATISTICS (ONLY SHOWS IN SPECIFIC SCREEN)
 	
 	*TEMPLATE
 		no tooltip
-		hidden
 	
 	// BUILDINGS OWNED / PEOPLE HIRED
 	
 	*personHire
 		text:<i>You have hired <b>[?(this=0)|no one|][?(this=1)|[this] Person|[this] People]</b></i>
+		is always:(clone)+(goldFlower)
 		tag:statMain
 	
 	*buildAmt
 		text:<i>You have built <b>[?(this=0)|nothing|[this] Building[s?this]]</b></i>
+		is always:(machine)+(hackedBlock)
 		tag:statMain
 	
 	// ALL PRODUCTION
@@ -360,11 +363,11 @@ Resources
 
 	*objFortune
 		text:<i>You have earned <b>[this] Coin[s?this] Worth</b> in Total</i>
-		tag:statGoal
+		tags:statGoal
 
 	*objRes
 		text:<i>You have cleared <b>[this] Objective[s?this]</b> in One Ascension</i>
-		tag:statGoal
+		tags:statGoal tokenRes
 	
 	// TIME
 	
@@ -401,19 +404,16 @@ Buildings
 	
 	// OBJECTIVES
 	*fortuneToad
-		name:Surpass Toad's Fortune
+		text:Surpass Toad's Fortune
 		desc:<i>"Since we started, we wanted to get richer than someone and brag about it."<//></></>(Note: This isn't the similarly-named animal; It's an actual species.)</i><//><.>Unlocks <b>Light Prognosticus & Dark Prognosticus</b> (Not available YET)
 		cost:10000000000 coinFortune
 		limit:1
 		on earn:
 			yield 10000000000 coinFortune
 			yield 20000000000 objFortune
-			yield 2000000000 coins
-			yield 2000000000 coinTotalOA
-			yield 4 dragonCoins
-			yield 4 drgnCoinTotalOA
-			yield 4 drgnCoinFortune
-			yield 1 fortuneToken
+			yield 2000000000 tag:coinRes
+			yield 4 tag:drgnCoinRes
+			yield 1 tag:tokenRes
 			yield 1 objRes
 		end
 		tags:mainObjective
@@ -421,25 +421,15 @@ Buildings
 
 	// UNLOCKED BUILDINGS
 	
-	*TEMPLATE
-		on earn:buildAmt is buildAmt+1
-		on lose:buildAmt is buildAmt-1
-	
 	*clone|clones
 		name:1-Up Mushroom|1-Up Mushrooms
 		desc:Creates a clone of yourself, and hunts down coins for you.<//><.>Produces <b>15 Coins</b> per Second.<//></><i>"I'm using those extra lives to clone me and get more coins!</>But they don't know if they're getting the right ones, so they aren't that good."</i>
 		cost:100 coins
 		req:50 coins:earned
 		on tick:
-			yield 15 coins
-			yield 15 cloneCoins
-			yield 15 coinFortune
-			yield 0.000000015 dragonCoins
-			yield 0.000000015 cloneDrgnCoins
-			yield 0.000000015 drgnCoinFortune
+			yield 15 tag:coinRes
+			yield 0.000000015 tag:drgnCoinRes
 		end
-		on earn:personHire is personHire+1
-		on lose:personHire is personHire-1
 		icon:icons[2,0] back[1,0]
 		tags:melee powerUp
 	
@@ -488,8 +478,6 @@ Buildings
 			yield 0.0004 goldFlowerDrgnCoins
 			yield 0.0004 drgnCoinFortune
 		end
-		on earn:personHire is personHire+1
-		on lose:personHire is personHire-1
 		icon:icons[5,0] back[1,0]
 		tags:melee powerUp
 	
